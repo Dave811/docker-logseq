@@ -5,7 +5,8 @@ Deploy Logseq in  any headless server, like aws、aliyun、tencent、huawei and 
 ```
 docker run -d \
   --privileged \
-  -p 3000:3000 \
+  -p 3000:3000 \  
+  -p 12315:12315 \
   -v config:/config \
   -v notes:/notes \
   --name logseq \
