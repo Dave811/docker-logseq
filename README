@@ -3,5 +3,12 @@ Deploy Logseq in  any headless server, like aws、aliyun、tencent、huawei and 
 
 # Usage
 ```
-docker run -d --name logseq -p 3000:3000 -v logseq_data:/config CorrectRoad/logseq
+docker run -d \
+  --privileged \
+  -p 3004:3000 \
+  -p 3325:3001 \
+  -v config:/config \
+  -v notes:/notes \
+  --name logseq \
+  correctroad/logseq:v0.10.9
 ```
