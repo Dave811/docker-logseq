@@ -12,6 +12,8 @@ RUN apt-get upgrade -y && \
 apt-get install -y \
 apt-utils \
 ca-certificates \
+fonts-noto-cjk \
+fonts-noto-cjk-extra \
 && apt-get install -y \
 # 音频相关
 libasound2t64 \
