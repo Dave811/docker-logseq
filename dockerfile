@@ -6,15 +6,15 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # 安装必要的包
 RUN apt-get update && \
-    apt-get install -y wget libfuse2 fuse
+    apt-get install -y wget python3-xdg
 
-RUN apt-get upgrade -y && \
-apt-get install -y \
+RUN apt-get install -y \
 apt-utils \
 ca-certificates \
 fonts-noto-cjk \
-fonts-noto-cjk-extra \
-&& apt-get install -y \
+fonts-noto-cjk-extra 
+
+RUN apt-get install -y \
 # 音频相关
 libasound2t64 \
 # GTK 相关
