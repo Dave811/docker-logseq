@@ -1,0 +1,7 @@
+# Why the Project
+Deploy Logseq in  any headless server, like aws、aliyun、tencent、huawei and so on.  now we can have a stable api http server to call logseq.
+
+# Usage
+```
+docker run -d --name logseq -p 3000:3000 -v logseq_data:/config CorrectRoad/logseq
+```
