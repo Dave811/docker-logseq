@@ -36,7 +36,7 @@ libxi6 \
 libxtst6
 
 # 下载 Logseq AppImage
-RUN wget https://github.com/logseq/logseq/releases/download/0.10.9/Logseq-linux-x64-0.10.9.AppImage -O /usr/local/bin/logseq
+RUN wget https://github.com/logseq/logseq/releases/download/nightly/Logseq-linux-x64-0.10.10-alpha+nightly.20241105.AppImage -O /usr/local/bin/logseq
 
 # 设置可执行权限
 RUN chmod +x /usr/local/bin/logseq
