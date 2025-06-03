@@ -35,6 +35,8 @@ This container supports multiple architectures and will automatically detect you
 
 ### Quick Start
 
+#### Option 1: Using Named Volumes (Recommended for new setups)
+
 ```bash
 docker run -d \
   --privileged \
@@ -46,12 +48,59 @@ docker run -d \
   nulinspiratie/docker-logseq:latest
 ```
 
+#### Option 2: Using Existing Directories
+
+```bash
+docker run -d \
+  --privileged \
+  -p 3000:3000 \
+  -p 12315:12315 \
+  -v /path/to/your/existing/config:/config \
+  -v /path/to/your/existing/notes:/notes \
+  --name logseq \
+  nulinspiratie/docker-logseq:latest
+```
+
+Replace `/path/to/your/existing/config` and `/path/to/your/existing/notes` with the actual paths to your existing Logseq configuration and notes directories.
+
 After running the container, access Logseq at `http://localhost:3000`
 
 ### Volume Configuration
 
+The container uses two main volumes for data persistence:
+
 - `/config` - Logseq configuration and settings
 - `/notes` - Your Logseq notes and data
+
+#### Using Docker Named Volumes (Recommended for new setups)
+
+Docker will create and manage these volumes automatically:
+
+```bash
+-v config:/config \
+-v notes:/notes \
+```
+
+#### Using Existing Directories (Bind Mounts)
+
+To use existing config files or notes folders from your host system, use absolute paths:
+
+```bash
+# Use existing directories
+-v /path/to/your/existing/config:/config \
+-v /path/to/your/existing/notes:/notes \
+
+# Example with real paths
+-v /home/user/.logseq:/config \
+-v /home/user/Documents/LogseqNotes:/notes \
+```
+
+**Important Notes:**
+
+- Use absolute paths (starting with `/`) for bind mounts
+- Ensure the directories exist on your host system before running the container
+- The container runs as a specific user, so make sure the directories are readable/writable
+- On Linux/macOS, you may need to adjust permissions: `chmod -R 755 /path/to/your/directories`
 
 ### Port Configuration
 
@@ -65,8 +114,10 @@ Most NAS systems (Synology, QNAP, etc.) support Docker containers:
 1. Open your NAS Docker interface
 2. Search for `nulinspiratie/docker-logseq`
 3. Set up the volumes:
-   - `/config` → your preferred config folder
-   - `/notes` → your Logseq notes folder
+   - **For new setups**: Use named volumes (`config` and `notes`)
+   - **For existing data**: Map to existing folders on your NAS
+   - `/config` → your preferred config folder (e.g., `/volume1/docker/logseq/config`)
+   - `/notes` → your Logseq notes folder (e.g., `/volume1/LogseqNotes`)
 4. Map ports `3000` and `12315`
 5. Enable privileged mode
 6. Access Logseq at `http://your-nas-ip:3000`
