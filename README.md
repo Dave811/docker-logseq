@@ -13,6 +13,17 @@ This Docker container solves these limitations by running the complete Logseq de
 - **Desktop feature parity** - Access all features available in the desktop version
 - **Remote accessibility** - Run Logseq on any headless server (AWS, Azure, self-hosted, NAS devices, etc.)
 
+## How It Works
+
+This container uses **KasmVNC** technology to stream the desktop Logseq application to your web browser:
+
+1. **Base Infrastructure**: Built on [LinuxServer's KasmVNC base image](https://github.com/linuxserver/docker-baseimage-kasmvnc), which provides a web-accessible VNC server
+2. **Desktop Application**: Downloads and installs the official Logseq desktop application (AppImage for x86_64, ZIP package for ARM64)
+3. **Web Streaming**: KasmVNC streams the desktop application interface directly to your browser - no additional VNC client needed
+4. **Full Functionality**: Since it's the actual desktop application running in a Linux environment, all features work exactly as they would on your local machine
+
+The result is seamless access to the complete Logseq desktop experience through any modern web browser, while maintaining full compatibility with plugins and API functionality.
+
 ## Supported Architectures
 
 This container supports multiple architectures and will automatically detect your system:
