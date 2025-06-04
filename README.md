@@ -168,6 +168,18 @@ git push origin v0.10.13
 
 This will trigger automated builds for both version-tagged and `latest` images.
 
+## Steps to enable HTTP API
+
+1. Navigate to Logseq URL (e.g. `localhost:3000`)
+2. Press three dots (`...`) on the topright -> `Settings`
+3. Go to `Advanced` -> Enable `Developer Mode`
+4. Go to `Features` -> Enable `HTTP APIs Server` -> Press `Restart App`
+5. Once app is restarted, press `API` in topright
+6. Go to `Server Configuration` -> Set `Host` to `0.0.0.0`
+7. Again press `API` -> `Start Server`
+8. Verify that API url is working (e.g. `localhost:12315`)
+9. Add a bearer token (and also add to any apps that require it)
+
 ## Credits
 
 This project is based on the original work by [@CorrectRoadH](https://github.com/CorrectRoadH/docker-logseq). Thank you for the initial implementation!
