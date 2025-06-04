@@ -57,12 +57,6 @@ RUN ARCH=$(uname -m) && \
     echo "Unsupported architecture: $ARCH" && exit 1; \
     fi
 
-# Create the notes directory and set proper permissions
-# The abc user is the default user for LinuxServer images (UID/GID will be set at runtime via PUID/PGID)
-RUN mkdir -p /notes && \
-    chmod 755 /notes && \
-    chown abc:abc /notes
-
 # Clean cache
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -72,4 +66,3 @@ COPY /root /
 EXPOSE 3000
 
 VOLUME /config
-VOLUME /notes
