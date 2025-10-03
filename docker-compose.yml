@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  logseq:
+    image: nulinspiratie/docker-logseq:latest
+    privileged: true
+    ports:
+      - "3000:3000"
+      - "12315:12315"
+    volumes:
+      - logseq_config:/config
+      - logseq_notes:/notes
+    restart: unless-stopped
+
+volumes:
+  logseq_config:
+    name: logseq_prod_config
+
+  logseq_notes:
+    name: logseq_prod_notes

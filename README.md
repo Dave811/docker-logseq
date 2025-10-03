@@ -122,6 +122,20 @@ Most NAS systems (Synology, QNAP, etc.) support Docker containers:
 5. Enable privileged mode
 6. Access Logseq at `http://your-nas-ip:3000`
 
+## Docker Compose Files
+
+This project includes pre-configured docker-compose files for different deployment scenarios:
+
+- **`docker-compose.dev.yml`** - For development and testing environments
+  - Builds the container from the local `dockerfile`
+  - Uses bind mounts for live configuration editing
+
+- **`docker-compose.yml`** - For production deployments
+  - Uses the published image `nulinspiratie/docker-logseq:latest`
+  - Uses named Docker volumes for data persistence
+
+See the docker-compose files in this repository for detailed configuration examples and usage instructions.
+
 ## Development
 
 ### Setting Up Development Environment

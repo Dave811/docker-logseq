@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  logseq:
+    build:
+      context: .
+      dockerfile: dockerfile
+    privileged: true
+    ports:
+      - "3000:3000"
+      - "12315:12315"
+    volumes:
+      - ./config:/config
+      - ./notes:/notes
+    restart: unless-stopped
